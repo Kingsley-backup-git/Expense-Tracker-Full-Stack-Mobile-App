@@ -49,7 +49,7 @@ This command will prompt you to choose:
 
 A project name
 
-A template (e.g., blank, tabs, minimal, typescript)
+A template (e.g., blank)
 ### 2. Navigate into your project folder
 
 ```bash
