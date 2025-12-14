@@ -45,6 +45,11 @@ This guide shows you how to create a new **React Native** project using **Expo**
 ```bash
 npx create-expo@latest
 ```
+This command will prompt you to choose:
+
+A project name
+
+A template (e.g., blank, tabs, minimal, typescript)
 ### 2. Navigate into your project folder
 
 ```bash
