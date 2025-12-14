@@ -45,4 +45,31 @@ This guide shows you how to create a new **React Native** project using **Expo**
 ```bash
 npx create-expo@latest
 ```
-### 2. Create a new Expo project
+### 2. Navigate into your project folder
+
+```bash
+cd your-project-name
+```
+
+
+### 3.Reset the project
+
+```bash
+npm run reset-project
+```
+This will:
+
+Move the starter code to app-example
+
+Create a fresh app directory for development
+
+### 4. Navigate to the app folder (if needed)
+```bash
+cd app
+```
+
+### 5. Start the development server
+
+```bash
+npx expo start
+```
