@@ -44,8 +44,5 @@ This guide shows you how to create a new **React Native** project using **Expo**
 
 ```bash
 npx create-expo@latest
-
-
-
-
-
+```
+### 2. Create a new Expo project
