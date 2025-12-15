@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# 📱 Expense Tracker App 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A simple and intuitive **React Native** app built with [Expo](https://expo.dev) using [`create-expo-app`](https://www.npmjs.com/package/create-expo-app). Track your income and expenses, view your balance in real-time, and manage your finances on the go.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+- Add, and delete **income and expenses**
+- Track transactions by **categories**
+- View **current balance** dynamically
+- Clean and intuitive **mobile UI**
+- Works on **iOS**, **Android**, and **web** via Expo
+- **user authentication**
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 🛠 Tech Stack
 
-In the output, you'll find options to open the app in a
+- **React Native** with **Expo**
+- **Expo Router** for navigation
+- **React Query** for state management
+- **Tanstack query** for fetching data
+- **Clerk** 
+- **MongoDB / Expressjs
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## ⚡ Getting Started
 
-## Get a fresh project
+Follow these steps to run the app locally:
 
-When you're ready, run:
+### 1. Install dependencies
+
+# 📱 Create and Start a New Expo Project
+
+This guide shows you how to create a new **React Native** project using **Expo**, reset it to start fresh, and run it locally.
+
+---
+
+## 🚀 Steps to Create a New Expo Project
+
+### 1. Create a new Expo project
+
+```bash
+npx create-expo@latest
+```
+This command will prompt you to choose:
+
+A project name
+
+A template (e.g., blank)
+### 2. Navigate into your project folder
+
+```bash
+cd your-project-name
+```
+
+
+### 3.Reset the project
 
 ```bash
 npm run reset-project
 ```
+This will:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Move the starter code to app-example
 
-## Learn more
+Create a fresh app directory for development
 
-To learn more about developing your project with Expo, look at the following resources:
+### 4. Navigate to the app folder (if needed)
+```bash
+cd app
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### 5. Start the development server
 
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npx expo start
+```
