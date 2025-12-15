@@ -6,7 +6,7 @@ export const BalanceCard = ({
   summaryData,
   summaryRefetch,
   summaryPending,
-  success
+  success,
 }: {
   summaryData: {
     _id: string;
@@ -14,9 +14,9 @@ export const BalanceCard = ({
     expense: number;
     income: string;
   };
-    summaryRefetch: any;
-    summaryPending: boolean;
-    success : boolean
+  summaryRefetch: any;
+  summaryPending: boolean;
+  success: boolean;
 }) => {
   async function RefreshData() {
     await summaryRefetch();
@@ -24,7 +24,7 @@ export const BalanceCard = ({
   if (success && summaryData)
     return (
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1 }}
+        showsVerticalScrollIndicator={false}
         refreshControl={
           <RefreshControl onRefresh={RefreshData} refreshing={summaryPending} />
         }

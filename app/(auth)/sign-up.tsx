@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useSignUp } from "@clerk/clerk-expo";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Link, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
 import {
+  ActivityIndicator,
   Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  StatusBar,
   Text,
   TextInput,
   TouchableOpacity,
@@ -26,10 +26,11 @@ export default function SignUpScreen() {
   const [pendingVerification, setPendingVerification] = React.useState(false);
   const [code, setCode] = React.useState("");
   const [error, setError] = React.useState("");
-
+  const [loading, setLoading] = React.useState<boolean>(false);
   const onSignUpPress = async () => {
     if (!isLoaded) return;
-
+    setError("");
+    setLoading(true);
     try {
       await signUp.create({
         emailAddress,
@@ -50,12 +51,15 @@ export default function SignUpScreen() {
       } else {
         setError("an error occured. Please try again");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   const onVerifyPress = async () => {
     if (!isLoaded) return;
-
+    setLoading(true);
+    setError("");
     try {
       const signUpAttempt = await signUp.attemptEmailAddressVerification({
         code,
@@ -66,6 +70,7 @@ export default function SignUpScreen() {
         setError("");
         router.replace("/");
       } else {
+        setError("An error occured");
       }
     } catch (err: any) {
       if (err?.errors[0]?.code === "verification_failed") {
@@ -73,7 +78,8 @@ export default function SignUpScreen() {
       } else {
         setError("an error occured. Please try again");
       }
- 
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -101,7 +107,11 @@ export default function SignUpScreen() {
         />
 
         <TouchableOpacity onPress={onVerifyPress} style={styles.button}>
-          <Text style={styles.buttonText}>Verify</Text>
+          {loading ? (
+            <ActivityIndicator size="small" color={"white"} />
+          ) : (
+            <Text style={styles.buttonText}>Verify</Text>
+          )}
         </TouchableOpacity>
       </View>
     );
@@ -154,7 +164,11 @@ export default function SignUpScreen() {
           />
 
           <TouchableOpacity style={styles.button} onPress={onSignUpPress}>
-            <Text style={styles.buttonText}>Sign Up</Text>
+            {loading ? (
+              <ActivityIndicator size="small" color={"white"} />
+            ) : (
+              <Text style={styles.buttonText}>Sign Up</Text>
+            )}
           </TouchableOpacity>
 
           <View style={styles.footerContainer}>

@@ -4,13 +4,12 @@ import {
   FlatList,
   Image,
   RefreshControl,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useEffect, useState } from "react";
-import { QueryClient, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import React from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ExpenseService } from "../../services/expense";
 import { useUser } from "@clerk/clerk-expo";
 import { styles } from "../../styles/home.styles";
@@ -27,14 +26,12 @@ const Home = () => {
   const router = useRouter();
   const queryClient = useQueryClient();
 
-
   const { data, isSuccess, isPending, isRefetching, refetch, isLoading } =
     useQuery({
       queryKey: ["transactions"],
       queryFn: async () =>
         await new ExpenseService().getTransaction(user?.id as string),
       enabled: !!user?.id,
-    
     });
 
   const {
@@ -49,12 +46,10 @@ const Home = () => {
     queryFn: async () =>
       await new ExpenseService().getSummary(user?.id as string),
     enabled: !!user?.id,
-      
   });
   const onRefresh = async () => {
     await refetch();
   };
-
 
   const mutation = useMutation({
     mutationFn: async (id: string) => {
@@ -68,13 +63,10 @@ const Home = () => {
           style: "cancel",
         },
       ]);
-  queryClient.invalidateQueries({ queryKey: ["transactions"] });
-  queryClient.invalidateQueries({ queryKey: ["summary"] });
-      
+      queryClient.invalidateQueries({ queryKey: ["transactions"] });
+      queryClient.invalidateQueries({ queryKey: ["summary"] });
     },
-    onError(err) {
-  
-    },
+    onError(err) {},
   });
   async function DeleteHandler(id: string) {
     return await mutation.mutateAsync(id);
@@ -145,10 +137,7 @@ const Home = () => {
             ListEmptyComponent={<NoTransactionsFound />}
             showsVerticalScrollIndicator={false}
             refreshControl={
-              <RefreshControl
-                refreshing={isRefetching}
-                onRefresh={onRefresh}
-              />
+              <RefreshControl refreshing={isRefetching} onRefresh={onRefresh} />
             }
           />
         </View>

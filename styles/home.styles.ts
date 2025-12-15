@@ -138,6 +138,7 @@ maxWidth:600
     backgroundColor: COLORS.card,
     borderRadius: 12,
     marginBottom: 10,
+ 
     flexDirection: "row",
     alignItems: "center",
     shadowColor: COLORS.shadow,
@@ -166,6 +167,8 @@ maxWidth:600
   },
   transactionLeft: {
     flex: 1,
+    paddingRight: 8,
+  
   },
   transactionTitle: {
     fontSize: 16,

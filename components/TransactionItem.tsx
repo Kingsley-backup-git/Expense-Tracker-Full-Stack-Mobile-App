@@ -2,6 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "../styles/home.styles";
 import { COLORS } from "../constants/color";
+import dayjs from "dayjs";
 // import { formatDate } from "../lib/utils";
 
 // Map categories to their respective icons
@@ -22,7 +23,13 @@ export const TransactionItem = ({
 }: {
   success: boolean;
   onDelete: (id: string) => void;
-  item: { _id: string; name: string; category: string; amount: number };
+  item: {
+    _id: string;
+    name: string;
+    category: string;
+    amount: number;
+    createdAt: Date;
+  };
 }) => {
   const isIncome = item?.amount > 0;
   const iconName = CATEGORY_ICONS[item?.category] || "pricetag-outline";
@@ -40,7 +47,9 @@ export const TransactionItem = ({
           </View>
           <View style={styles.transactionLeft}>
             <Text style={styles.transactionTitle}>{item?.name}</Text>
-            <Text style={styles.transactionCategory}>{item?.category}</Text>
+            <Text style={styles.transactionCategory} numberOfLines={1}>
+              {item?.category}
+            </Text>
           </View>
           <View style={styles.transactionRight}>
             <Text
@@ -51,7 +60,12 @@ export const TransactionItem = ({
             >
               {isIncome ? "+" : "-"}${Math.abs(item?.amount).toFixed(2)}
             </Text>
-            {/* <Text style={styles.transactionDate}>{formatDate(item.created_at)}</Text> */}
+            <Text style={styles.transactionDate}>
+              {dayjs(item?.createdAt).format("DD/MM/YY")}
+            </Text>
+            <Text style={styles.transactionDate}>
+              {dayjs(item?.createdAt).format("hh:mm a")}
+            </Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity
